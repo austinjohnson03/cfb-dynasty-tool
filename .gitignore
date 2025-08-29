@@ -1,0 +1,48 @@
+# Build artifacts
+*.o
+*.obj
+*.so
+*.dll
+*.dylib
+*.a
+*.lib
+*.out
+*.exe
+
+# Build directories
+/build/
+/bin/
+/obj/
+/dist/
+
+# SQLite database files
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
+*.sqlite3-journal
+
+# Logs and temp files
+*.log
+*.tmp
+*.swp
+*.swo
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+compile_commands.json
+
+# Visual Studio Code
+.vscode/
+*.code-workspace
+
+# CLion / JetBrains
+.idea/
+
+# Other system files
+.DS_Store
+Thumbs.db
+

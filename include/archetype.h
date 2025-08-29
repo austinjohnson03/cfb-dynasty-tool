@@ -1,0 +1,11 @@
+#pragma once
+
+enum class Archetype {
+  AGILE,
+  DUAL_THREAT,
+  EAST_WEST_PLAYMAKER,
+  ELUSIVE_ROUTE_RUNNER,
+  POCKET_PASSER,
+  RAW_STRENGTH,
+  SPEEDSTER,
+};
