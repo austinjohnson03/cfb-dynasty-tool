@@ -1,6 +1,6 @@
 CXX = g++
 CXXFLAGS = -std=c++17 -Wall -g -Iinclude
-LDFLAGS = -lsqlite3
+LDFLAGS = -lsqlite3 -lgtest -lgtest_main -pthread
 
 GTEST_FLAGS = $(shell pkg-config --cflags --libs gtest)
 
