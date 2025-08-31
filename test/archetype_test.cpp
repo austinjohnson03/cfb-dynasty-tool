@@ -11,7 +11,7 @@ class ArchetypeTest : public ::testing::Test {
     }
 };
 
-TEST(archetype_test, archetype_type_to_string_test) {
+TEST(archetype_type_test, archetype_type_to_string_test) {
   EXPECT_EQ(
       archetype_type_to_string(ArchetypeType::BACKFIELD_THREAT), "Backfield Threat"
       );
@@ -19,10 +19,16 @@ TEST(archetype_test, archetype_type_to_string_test) {
   EXPECT_EQ(archetype_type_to_string(ArchetypeType::UNKNOWN), "Unknown");
 }
 
-TEST(archetype_test, archetype_type_is_valid_test) {
+TEST(archetype_type_test, archetype_type_is_valid_test) {
   EXPECT_TRUE(archetype_type_is_valid(ArchetypeType::BOX_SPECIALIST));
   EXPECT_TRUE(archetype_type_is_valid(ArchetypeType::POCKET_PASSER));
   EXPECT_FALSE(archetype_type_is_valid(ArchetypeType::UNKNOWN));
+}
+
+TEST(archetype_type_test, archetype_type_from_string_test) {
+  EXPECT_EQ(archetype_type_from_string("BACKfield Creator"), ArchetypeType::BACKFIELD_CREATOR);
+  EXPECT_EQ(archetype_type_from_string("    Gap SPECIALIST     "), ArchetypeType::GAP_SPECIALIST);
+  EXPECT_EQ(archetype_type_from_string("???"), ArchetypeType::UNKNOWN);
 }
 
 TEST_F(ArchetypeTest, has_correct_name) {

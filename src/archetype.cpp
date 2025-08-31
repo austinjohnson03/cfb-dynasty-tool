@@ -9,4 +9,4 @@ Archetype::Archetype(ArchetypeType at) : archetype_type(at) {
 
 std::string Archetype::get_name() const { return name; }
 
-ArchetypeType Archetype::get_archetype_type() { return archetype_type; }
+ArchetypeType Archetype::get_archetype_type() const { return archetype_type; }
