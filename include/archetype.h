@@ -1,11 +1,18 @@
 #pragma once
 
-enum class Archetype {
-  AGILE,
-  DUAL_THREAT,
-  EAST_WEST_PLAYMAKER,
-  ELUSIVE_ROUTE_RUNNER,
-  POCKET_PASSER,
-  RAW_STRENGTH,
-  SPEEDSTER,
+#include "archetype_type.h"
+#include <string>
+
+class Archetype {
+  public:
+    Archetype();
+    Archetype(ArchetypeType at);
+    ~Archetype() = default;
+
+    std::string get_name() const;
+    ArchetypeType get_archetype_type();
+
+  private:
+    std::string name;
+    ArchetypeType archetype_type;
 };
