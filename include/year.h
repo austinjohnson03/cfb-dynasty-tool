@@ -12,7 +12,7 @@ enum class Year {
   UNK
 };
 
-inline std::string to_string(Year y) {
+inline std::string year_to_string(Year y) {
   switch (y) {
     case Year::HS: return "HS";
     case Year::FR: return "FR";
@@ -24,7 +24,7 @@ inline std::string to_string(Year y) {
   }
 }
 
-Year year_from_string(const std::string& s) {
+inline Year year_from_string(const std::string& s) {
   // Convert string to upper
   std::string s_upper = s;
   std::transform(s_upper.begin(), s_upper.end(), s_upper.begin(), ::toupper);
@@ -40,3 +40,5 @@ Year year_from_string(const std::string& s) {
   }
   return Year::UNK;
 }
+
+inline bool is_valid_year(Year y) { return y != Year::UNK; }
