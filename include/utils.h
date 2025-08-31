@@ -3,6 +3,7 @@
 #include <string>
 #include <algorithm>
 #include <cctype>
+#include <stdexcept>
 
 namespace Utils {
   inline std::string trim(const std::string& s) {
@@ -24,5 +25,19 @@ namespace Utils {
         [](unsigned char c){ return std::tolower(c); });
 
     return s;
+  }
+
+  inline int convert_height_str(std::string s) {
+    s = trim(s);
+    size_t pos = s.find('\'');
+    if (pos == std::string::npos) {
+      throw std::invalid_argument("Invalid height format, expected ft'in\"");
+    }
+
+    int ft = std::stoi(s.substr(0, pos));
+
+    int in = std::stoi(s.substr(pos + 1));
+
+    return ft * 12 + in;
   }
 }
