@@ -22,6 +22,15 @@ class Location {
 
     std::string to_string() const;
 
+    bool operator==(const Location& other) const {
+      return city == other.get_city() &&
+        state == other.get_state();
+    }
+
+    bool operator!=(const Location& other) const {
+      return !(*this == other);
+    }
+
   private:
     uint32_t id;
     std::string city;
