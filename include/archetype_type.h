@@ -123,6 +123,68 @@ inline std::string archetype_type_to_string(ArchetypeType t) {
   }
 }
 
+inline ArchetypeType archetype_type_from_string(std::string s) {
+  s = Utils::to_lower(Utils::trim(s));
+
+  static const std::unordered_map<std::string, ArchetypeType> mp = {
+    {"backfield creator", ArchetypeType::BACKFIELD_CREATOR},
+    {"dual threat", ArchetypeType::DUAL_THREAT},
+    {"pocket_passer", ArchetypeType::POCKET_PASSER},
+    {"pure runner", ArchetypeType::PURE_RUNNER},
+    {"backfield threat", ArchetypeType::BACKFIELD_THREAT},
+    {"contact seeker", ArchetypeType::CONTACT_SEEKER},
+    {"east/west playmaker", ArchetypeType::EAST_WEST_PLAYMAKER},
+    {"east west playmaker", ArchetypeType::EAST_WEST_PLAYMAKER},
+    {"elusive bruiser", ArchetypeType::ELUSIVE_BRUISER},
+    {"north/south receiver", ArchetypeType::NORTH_SOUTH_RECEIVER},
+    {"north south receiver", ArchetypeType::NORTH_SOUTH_RECEIVER},
+    {"north/south reciever", ArchetypeType::NORTH_SOUTH_RECEIVER},
+    {"north south reciever", ArchetypeType::NORTH_SOUTH_RECEIVER},
+    {"north/south blocker", ArchetypeType::NORTH_SOUTH_BLOCKER},
+    {"north south blocker", ArchetypeType::NORTH_SOUTH_BLOCKER},
+    {"blocking", ArchetypeType::BLOCKING},
+    {"utility", ArchetypeType::UTILITY},
+    {"contested specialist", ArchetypeType::CONTESTED_SPECIALIST},
+    {"contest specialist", ArchetypeType::CONTESTED_SPECIALIST},
+    {"elusive route runner", ArchetypeType::ELUSIVE_ROUTE_RUNNER},
+    {"gadget", ArchetypeType::GADGET},
+    {"route artist", ArchetypeType::ROUTE_ARTIST},
+    {"speedster", ArchetypeType::SPEEDSTER},
+    {"gritty possession", ArchetypeType::GRITTY_POSSESSION},
+    {"physical route runner", ArchetypeType::PHYSICAL_ROUTE_RUNNER},
+    {"possession", ArchetypeType::POSSESSION},
+    {"pure blocker", ArchetypeType::PURE_BLOCKER},
+    {"vertical threat", ArchetypeType::VERTICAL_THREAT},
+    {"agile", ArchetypeType::AGILE},
+    {"pass protector", ArchetypeType::PASS_PROTECTOR},
+    {"raw strength", ArchetypeType::RAW_STRENGTH},
+    {"well rounded", ArchetypeType::WELL_ROUNDED},
+    {"power rusher", ArchetypeType::POWER_RUSHER},
+    {"pure power", ArchetypeType::PURE_POWER},
+    {"speed rusher", ArchetypeType::SPEED_RUSHER},
+    {"edge setter", ArchetypeType::EDGE_SETTER},
+    {"gap specialist", ArchetypeType::GAP_SPECIALIST},
+    {"lurker", ArchetypeType::LURKER},
+    {"signal caller", ArchetypeType::SIGNAL_CALLER},
+    {"thumper", ArchetypeType::THUMPER},
+    {"boundary", ArchetypeType::BOUNDARY},
+    {"bump and run", ArchetypeType::BUMP_AND_RUN},
+    {"field", ArchetypeType::FIELD},
+    {"zone", ArchetypeType::ZONE},
+    {"box specialist", ArchetypeType::BOX_SPECIALIST},
+    {"coverage specialist", ArchetypeType::COVERAGE_SPECIALIST},
+    {"hybrid", ArchetypeType::HYBRID},
+    {"accurate", ArchetypeType::ACCURATE},
+    {"power", ArchetypeType::POWER},
+    {"unknown", ArchetypeType::UNKNOWN}
+  };
+
+  auto it = mp.find(s);
+  if (it != mp.end()) return it->second;
+
+  return ArchetypeType::UNKNOWN;
+}
+
 inline bool archetype_type_is_valid(ArchetypeType at) { 
   return at != ArchetypeType::UNKNOWN;
 }
