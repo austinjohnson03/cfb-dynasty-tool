@@ -1,43 +1,29 @@
 #pragma once 
 
 #include <string>
-#include <algorithm>
-#include <cctype>
-#include <stdexcept>
+#include <cstdint>
+#include <functional>
 
 namespace Utils {
-  inline std::string trim(const std::string& s) {
-    auto start = s.find_first_not_of(" \t\n\r\f\v ");
-    auto end = s.find_last_not_of(" \t\n\r\f\v ");
-    if (start == std::string::npos) return "";
-    return s.substr(start, end - start + 1);
-  }
+  enum class LogLevel { INFO, WARNING, ERROR };
 
-  inline std::string to_upper(std::string s) {
-    std::transform(s.begin(), s.end(), s.begin(),
-        [](unsigned char c){ return std::toupper(c); });
-
-    return s;
-  }
-
-  inline std::string to_lower(std::string s) {
-    std::transform(s.begin(), s.end(), s.begin(),
-        [](unsigned char c){ return std::tolower(c); });
-
-    return s;
-  }
-
-  inline int convert_height_str(std::string s) {
-    s = trim(s);
-    size_t pos = s.find('\'');
-    if (pos == std::string::npos) {
-      throw std::invalid_argument("Invalid height format, expected ft'in\"");
+  inline std::string log_level_to_string(LogLevel level) {
+    switch (level) {
+      case LogLevel::INFO: return "INFO";
+      case LogLevel::WARNING: return "WARNING";
+      case LogLevel::ERROR: return "ERROR";
     }
-
-    int ft = std::stoi(s.substr(0, pos));
-
-    int in = std::stoi(s.substr(pos + 1));
-
-    return ft * 12 + in;
+    return "UNKNOWN";
   }
-}
+
+  std::string trim(const std::string& s);
+  std::string to_upper(std::string s);
+  std::string to_lower(std::string s);
+  int convert_height_str(std::string s);
+
+  void log(
+      LogLevel level, 
+      const std::string& msg, 
+      const std::string& filename = "logs/log.txt"
+      );
+} // namespace Utils
