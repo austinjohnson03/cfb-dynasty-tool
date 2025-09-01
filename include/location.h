@@ -17,6 +17,7 @@ class Location {
     void set_city(std::string city);
 
     State get_state() const;
+    std::string get_state_str() const;
     void set_state(State state);
     void set_state(std::string state);
 

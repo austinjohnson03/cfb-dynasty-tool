@@ -49,6 +49,8 @@ TEST(location_test, SettersAndGetters) {
 
   loc.set_id(42);
   EXPECT_EQ(loc.get_id(), 42);
+
+  EXPECT_EQ(loc.get_state_str(), "CA");
 }
 
 TEST(location_test, InternationalTest) {

@@ -22,6 +22,8 @@ void Location::set_city(std::string city) {
 
 State Location::get_state() const { return state; }
 
+std::string Location::get_state_str() const { return state_to_string(state); }
+
 void Location::set_state(State state) {
   this->state = state;
 }
