@@ -1,3 +1,5 @@
+-- Varchar is used in case of migration to non-Sqlite DB in future
+
 CREATE TABLE IF NOT EXISTS states (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     abbreviation VARCHAR(3) NOT NULL,
@@ -39,10 +41,32 @@ CREATE TABLE IF NOT EXISTS locations (
     FOREIGN KEY (state_id) REFERENCES states (id)
 );
 
+CREATE TABLE IF NOT EXISTS dev_traits (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name VARCHAR(7) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS poll_types (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    short_name VARCHAR(9) NOT NULL,
+    full_name VARCHAR(33) NOT NULL,
+    UNIQUE(short_name, full_name)
+);
+
+CREATE TABLE IF NOT EXISTS pipelines (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name VARCHAR(30) NOT NULL UNIQUE
+);
+
+CREATE TABLE IF NOT EXISTS player_archetypes (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name VARCHAR(20) NOT NULL UNIQUE
+);
+
 CREATE TABLE IF NOT EXISTS teams (
     id INTEGER PRIMARY KEY,
-    school VARCHAR(30) NOT NULL,
-    mascot VARCHAR(30) NOT NULL,
+    school VARCHAR(31) NOT NULL,
+    mascot VARCHAR(16) NOT NULL,
     abbreviation VARCHAR(8) NOT NULL,
     location_id INTEGER NOT NULL,
     conference_id INTEGER NOT NULL,
